@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
     <!-- font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    <link rel="stylesheet" href="/php-Workspace/DuAn_WebMonAn_Nhom6/assets/css/product_list.css">
     <style>
        * {
             margin: 0;
@@ -28,11 +29,15 @@
 </head>
 <body>
     <!-- Include components -->
-    <div id="header"><?php include '../partials/header.php'; ?></div>
-    <div id="banner"><?php include '../partials/banner.php'; ?></div>
-    <div id="menu"><?php include '../partials/menu.php'; ?></div>
-    
-    <div id="footer"><?php include '../partials/footer.php'; ?></div>
+    <div id="header"><?php include __DIR__ . '/../partials/header.php'; ?></div>
+    <div id="banner"><?php include __DIR__ . '/../partials/banner.php'; ?></div>
+    <br>
+    <h1 class="menu-title">Thực đơn</h1>
+
+    <main> <?php echo $content; ?> </main>
+    <div id="menu"><?php include __DIR__ . '/../partials/menu.php'; ?></div>
+
+    <div id="footer"><?php include __DIR__ . '/../partials/footer.php'; ?></div>
 
     <script src="../Components/JS/main.js"></script>
 </body>

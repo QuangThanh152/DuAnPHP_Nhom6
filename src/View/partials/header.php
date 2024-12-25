@@ -1,3 +1,5 @@
+<?php
+?>
 <link rel="stylesheet" href="/php-Workspace/DuAn_WebMonAn_Nhom6/assets/css/header.css">
 <header class="header">
     <div class="header-content">
@@ -21,14 +23,25 @@
                     <i class="fa-solid fa-info-circle"></i>
                     Thông tin
                 </a>
-                <a href="/login" class="nav-link">
-                    <i class="fa-solid fa-sign-in-alt"></i>
-                    Đăng Nhập
-                </a>
-                <a href="/admin" class="nav-link">
-                    <i class="fa-solid fa-user-shield"></i>
-                    Admin đăng nhập
-                </a>
+                <?php if (isset($_SESSION['user'])): ?>
+                    <a href="#" class="nav-link">
+                        <i class="fa-solid fa-user"></i>
+                        Hello, <?php echo htmlspecialchars($_SESSION['user']['username']); ?>
+                    </a>
+                    <a href="/php-Workspace/DuAn_WebMonAn_Nhom6/logout.php" class="nav-link" style="margin-right: 1rem;">
+                        <i class="fa-solid fa-sign-out-alt"></i>
+                        Đăng Xuất
+                    </a>
+                <?php else: ?>
+                    <a href="/php-Workspace/DuAn_WebMonAn_Nhom6/login" class="nav-link">
+                        <i class="fa-solid fa-sign-in-alt"></i>
+                        Đăng Nhập
+                    </a>
+                    <a href="/php-Workspace/DuAn_WebMonAn_Nhom6/admin" class="nav-link">
+                        <i class="fa-solid fa-user-shield"></i>
+                        Admin đăng nhập
+                    </a>
+                <?php endif; ?>
             </nav>
         </div>
     </div>

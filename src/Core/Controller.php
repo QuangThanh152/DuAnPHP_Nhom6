@@ -1,24 +1,20 @@
 <?php
 namespace App\Core;
 
-class Controller {
-    protected function render($view_name, $data = []) {
-        // Giải nén dữ liệu để sử dụng trong view
-        extract($data);
+session_start();
 
-        // Đảm bảo rằng đường dẫn file view là an toàn và tồn tại
-        $file = APPROOT . "/src/View/" . $view_name . ".php";
-        
-        if (is_readable($file)) {
-            include $file;
-        } else {
-            die('<h1> 404 Page not found </h1>');
-        }
+class Controller {
+    protected function render($view, $data = [], $layout = 'HomePage') {
+        extract($data); // Giải nén biến dữ liệu
+        ob_start();
+        include __DIR__ . '/../View/views/' . $view . '.php';
+        $content = ob_get_clean();
+        include __DIR__ . '/../View/layouts/' . $layout . '.php';
     }
 
     protected function redirect($url) {
-        header("Location: $url");
-        exit();
+    header("Location: http://localhost/php-Workspace/DuAn_WebMonAn_Nhom6" . $url);        
+    exit();
     }
 }
 ?>

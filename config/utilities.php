@@ -20,6 +20,26 @@ function view($view, $data = [])
     die('<h1> 404 Page not found </h1>');
   }
 }
+function getCategoryName($categoryId) {
+    // Kết nối đến cơ sở dữ liệu
+    $conn = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    // Thực hiện truy vấn để lấy tên thể loại
+    $sql = "SELECT name FROM category_list WHERE id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $categoryId);
+    $stmt->execute();
+    $stmt->bind_result($categoryName);
+    $stmt->fetch();
+    $stmt->close();
+    $conn->close();
+
+    return $categoryName;
+}
+
 
 // Các hàm tiện ích khác
 function sanitize_input($data) {

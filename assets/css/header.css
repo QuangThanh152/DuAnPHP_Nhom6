@@ -21,6 +21,8 @@
   text-decoration: none;
   font-size: 1.5rem;
   font-family: "Dancing Script", cursive;
+  margin-right: auto; /* Đẩy logo về bên trái */
+  margin-left: 1rem; /* Rút ngắn khoảng cách với lề trái */
 }
 
 .menu-toggle {
@@ -43,6 +45,7 @@
   display: flex;
   gap: 1.5rem;
   align-items: center;
+  margin-left: auto; /* Đẩy các liên kết về bên phải */
 }
 
 .nav-link {

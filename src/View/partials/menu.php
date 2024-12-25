@@ -1,6 +1,5 @@
 <link rel="stylesheet" href="/php-Workspace/DuAn_WebMonAn_Nhom6/assets/css/menu.css">
 <section class="menu" id="menu">
-    <h2 class="menu-title">Thực đơn</h2>
     <div class="menu-grid" id="menuGrid">
       <!-- Menu items will be inserted here by JavaScript -->
     </div>

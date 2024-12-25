@@ -27,7 +27,7 @@
 }
 
 .order-button {
-  background-color: #4f46e5;
+  background-color: #b72632;
   color: white;
   padding: 0.75rem 2rem;
   border: none;
@@ -39,7 +39,7 @@
 }
 
 .order-button:hover {
-  background-color: #4338ca;
+  background-color: #b72632;
 }
 
 @media (max-width: 768px) {

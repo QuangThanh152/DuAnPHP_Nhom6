@@ -21,40 +21,33 @@ class LoginController extends Controller {
             $password = $_POST['password'];
             $user = $this->userModel->getUserByUsername($username);
 
-            if ($user === false || $user === null) {
-                $this->render('login', ['error' => 'User not found']);
+            if ($user === false) {
+                $error = 'Username not found';
+            } elseif ($password !== $user['password']) {
+                $error = 'Incorrect password';
+            } else {
+                // Đăng nhập thành công
+                $_SESSION['user'] = $user;
+                $this->redirect('/products');
                 return;
             }
-
-            if ($password === $user['password']) {
-                $_SESSION['user'] = $user;
-                $this->redirect(BASE_URL . '/dashboard.php');
-            } else {
-                $this->render('login', ['error' => 'Invalid username or password']);
-            }
+            // Hiển thị thông báo lỗi cụ thể trong cùng trang
+            $this->renderLoginPage($error);
         } else {
-            $this->render('login');
+            $this->renderLoginPage();
         }
+    }
+
+    private function renderLoginPage($error = null) {
+        // Chuyển đổi sang biến toàn cục để sử dụng trong HTML
+        global $error;
+        include __DIR__ . '/../View/layouts/LoginPage.php';
     }
 
     public function logout() {
         unset($_SESSION['user']);
         session_destroy();
-        $this->redirect(BASE_URL . '/login.php');
-    }
-
-    public function signup() {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $username = $_POST['username'];
-            $password = $_POST['password'];
-            // Implement signup logic and render appropriate view
-        } else {
-            $this->render('signup');
-        }
-    }
-
-    public function profile() {
-        $this->render('profile', ['user' => $_SESSION['user']]);
+        $this->redirect('/login.php');
     }
 }
 ?>

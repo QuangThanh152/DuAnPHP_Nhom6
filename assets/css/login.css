@@ -14,10 +14,17 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: url(Wallpaper.jpg);
-  background-size: cover;
-  background-position: center;
+  background: url("../downloaded/wallpaper.jpg"); /* Đường dẫn tương đối tới ảnh nền */
+  background-size: cover; /* Đảm bảo ảnh bao phủ toàn bộ màn hình */
+  background-position: center; /* Đảm bảo ảnh nằm ở vị trí trung tâm */
+  background-repeat: no-repeat; /* Đảm bảo ảnh không lặp lại */
+  background-attachment: fixed; /* Đảm bảo ảnh nền không cuộn theo nội dung */
   background-color: #f0f0f0;
+}
+.error {
+  color: red;
+  font-weight: bold;
+  margin-top: 10px;
 }
 
 header {
@@ -37,6 +44,11 @@ header {
   width: 100%;
   object-fit: cover;
 }
+.fa-utensils {
+  font-size: 48px; /* Thay đổi giá trị này để điều chỉnh kích thước biểu tượng */
+  color: #333; /* Màu sắc của biểu tượng */
+  margin-right: 20px;
+}
 
 .logo.h2 {
   font-size: 1em;
@@ -45,9 +57,9 @@ header {
 }
 
 .logo img {
-  height: 5em;
-  width: 5em;
-  gap: 0.5em;
+  width: 150px; /* Điều chỉnh kích thước ảnh */
+  height: auto;
+  background: transparent; /* Đảm bảo nền trong suốt */
 }
 
 .logo {
@@ -100,8 +112,8 @@ header {
 }
 
 .navigation .btnlogin-popup:hover {
-  background: gray;
-  color: black;
+  background: black;
+  color: #fff;
 }
 
 .wrapper {
@@ -290,7 +302,7 @@ header {
   font-weight: 600;
 }
 .login-register a {
-  color: #fa0303;
+  color: #203737;
 }
 .login-register p a:hover {
   text-decoration: underline;

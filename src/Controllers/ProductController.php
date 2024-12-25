@@ -3,6 +3,7 @@ namespace App\Controllers;
 
 use App\Core\Controller;
 use App\Models\ProductModel;
+use Exception;
 
 class ProductController extends Controller {
     private $productModel;
@@ -16,13 +17,25 @@ class ProductController extends Controller {
     }
 
     public function listProducts() {
-        $products = $this->productModel->getProducts();
-        $this->render('product_list', ['products' => $products]);
+        try {
+            $products = $this->productModel->getProducts();
+            $data = [
+                'title' => 'Danh sách sản phẩm',
+                'products' => $products
+            ];
+            $this->render('product_list', $data);
+        } catch (Exception $e) {
+            echo "An error occurred: " . $e->getMessage();
+        }
     }
 
     public function viewProduct($productId) {
         $product = $this->productModel->getProductById($productId);
-        $this->render('product_detail', ['product' => $product]);
+        $title = 'Chi tiết sản phẩm';
+        ob_start();
+        include __DIR__ . '/../View/views/product_detail.php';
+        $content = ob_get_clean();
+        include __DIR__ . '/../View/layouts/HomePage.php';
     }
 
     public function createProduct($data) {
