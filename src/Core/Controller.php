@@ -13,8 +13,8 @@ class Controller {
     }
 
     protected function redirect($url) {
-    header("Location: http://localhost/php-Workspace/DuAn_WebMonAn_Nhom6" . $url);        
-    exit();
+        header("Location: http://localhost/php-Workspace/DuAn_WebMonAn_Nhom6" . $url);        
+        exit();
     }
 }
 ?>

@@ -4,20 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đồ Án PHP - Nhóm 6</title>
-    <!-- font chữ -->
+    <!-- Font chữ -->
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
-    <!-- font Awesome -->
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    <link rel="stylesheet" href="/php-Workspace/DuAn_WebMonAn_Nhom6/assets/css/product-detail.css">
     <link rel="stylesheet" href="/php-Workspace/DuAn_WebMonAn_Nhom6/assets/css/product_list.css">
+    <link rel="stylesheet" href="/php-Workspace/DuAn_WebMonAn_Nhom6/assets/css/cart_list.css">
     <style>
-       * {
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
         html {
-            scroll-behavior: smooth; 
+            scroll-behavior: smooth;
         }
 
         body {
@@ -30,13 +32,14 @@
 <body>
     <!-- Include components -->
     <div id="header"><?php include __DIR__ . '/../partials/header.php'; ?></div>
-    <div id="banner"><?php include __DIR__ . '/../partials/banner.php'; ?></div>
+    <?php if ($title == 'Danh sách sản phẩm') : ?>
+        <div id="banner"><?php include __DIR__ . '/../partials/banner.php'; ?></div>
+    <?php endif; ?>
     <br>
     <h1 class="menu-title">Thực đơn</h1>
 
     <main> <?php echo $content; ?> </main>
     <div id="menu"><?php include __DIR__ . '/../partials/menu.php'; ?></div>
-
     <div id="footer"><?php include __DIR__ . '/../partials/footer.php'; ?></div>
 
     <script src="../Components/JS/main.js"></script>

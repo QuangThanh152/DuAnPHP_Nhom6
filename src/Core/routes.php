@@ -7,7 +7,7 @@ use App\Controllers\CartController;
 
 // Khởi tạo router
 $router = new Router();
-
+$router->addRoute('/^\/$/', [new ProductController(), 'listProducts']);
 // Thêm routes cho ProductController
 $router->addRoute('/^\/products$/', [new ProductController(), 'listProducts']);
 $router->addRoute('/^\/product\/(\d+)$/', [new ProductController(), 'viewProduct']);
@@ -16,8 +16,8 @@ $router->addRoute('/^\/product\/edit\/(\d+)$/', [new ProductController(), 'editP
 $router->addRoute('/^\/product\/delete\/(\d+)$/', [new ProductController(), 'deleteProduct']);
 
 // Thêm routes cho LoginController
-$router->addRoute('/^\/login$/', callback: [new LoginController(), 'login']);
-    $router->addRoute('/^\/logout$/', [new LoginController(), 'logout']);
+$router->addRoute('/^\/login$/', [new LoginController(), 'login']);
+$router->addRoute('/^\/logout$/', [new LoginController(), 'logout']);
 $router->addRoute('/^\/signup$/', [new LoginController(), 'signup']);
 $router->addRoute('/^\/profile$/', [new LoginController(), 'profile']);
 
@@ -25,7 +25,7 @@ $router->addRoute('/^\/profile$/', [new LoginController(), 'profile']);
 $router->addRoute('/^\/cart$/', [new CartController(), 'viewCart']);
 $router->addRoute('/^\/cart\/add\/(\d+)\/(\d+)$/', [new CartController(), 'addProductToCart']);
 $router->addRoute('/^\/cart\/remove\/(\d+)$/', [new CartController(), 'removeProductFromCart']);
-$router->addRoute('/^\/cart\/update\/(\d+)\/(\d+)$/', [new CartController(), 'updateProductQtyInCart']);
+$router->addRoute('/^\/cart\/update\/(\d+)$/', [new CartController(), 'updateProductQtyInCart']);
 $router->addRoute('/^\/cart\/checkout$/', [new CartController(), 'checkout']);
 
 // Trả về đối tượng router

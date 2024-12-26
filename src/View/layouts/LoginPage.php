@@ -52,7 +52,7 @@
                 </div>
                 <!-- Hiển thị thông báo lỗi nếu có -->
                 <?php if (isset($error)): ?>
-                    <p class="error"><?php echo $error; ?></p>
+                    <p class="error"><?php echo htmlspecialchars($error, ENT_QUOTES, 'UTF-8'); ?></p>
                 <?php endif; ?>
             </form>
         </div>
@@ -60,58 +60,65 @@
         <!-- Form đăng ký -->
         <div class="form-box register">
             <h2>Registration</h2>
-            <form action="/php-Workspace/DuAn_WebMonAn_Nhom6/register" method="POST">
+            <form action="/php-Workspace/DuAn_WebMonAn_Nhom6/signup" method="POST">
                 <div class="input-box">
                     <span class="icon">
                         <ion-icon name="person-circle-outline"></ion-icon>
                     </span>
-                    <input type="text" required>
+                    <input type="text" name="username" required>
+                    <label>Username</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon">
+                        <ion-icon name="person-circle-outline"></ion-icon>
+                    </span>
+                    <input type="text" name="first_name" required>
                     <label>First name</label>
                 </div>
                 <div class="input-box">
                     <span class="icon">
                         <ion-icon name="person-circle-outline"></ion-icon>
                     </span>
-                    <input type="text" required>
+                    <input type="text" name="last_name" required>
                     <label>Last name</label>
                 </div>
                 <div class="input-box">
                     <span class="icon">
                         <ion-icon name="mail-outline"></ion-icon>
                     </span>
-                    <input type="text" required>
+                    <input type="email" name="email" required>
                     <label>Email</label>
                 </div>
                 <div class="input-box">
                     <span class="icon">
                         <ion-icon name="lock-closed-outline"></ion-icon>
                     </span>
-                    <input type="password" required>
+                    <input type="password" name="password" required>
                     <label>Password</label>
                 </div>
                 <div class="input-box">
                     <span class="icon">
                         <ion-icon name="lock-closed-outline"></ion-icon>
                     </span>
-                    <input type="password" required>
+                    <input type="password" name="confirm_password" required>
                     <label>Confirm Password</label>
                 </div>
                 <div class="input-box">
                     <span class="icon">
                         <ion-icon name="call-outline"></ion-icon>
                     </span>
-                    <input type="text" required>
+                    <input type="text" name="phone" required>
                     <label>Phone Number</label>
                 </div>
                 <div class="input-box">
                     <span class="icon">
                         <ion-icon name="location-outline"></ion-icon>
                     </span>
-                    <input type="text" required>
+                    <input type="text" name="address" required>
                     <label>Address</label>
                 </div>
                 <div class="remember-forgot">
-                    <label><input type="checkbox"> I agree to the terms & conditions</label>
+                    <label><input type="checkbox" required> I agree to the terms & conditions</label>
                 </div>
                 <button type="submit" class="btn">Sign Up</button>
                 <div class="login-register">
@@ -119,6 +126,10 @@
                         <a href="#" class="login-link">Login</a>
                     </p>
                 </div>
+                <!-- Hiển thị thông báo lỗi nếu có -->
+                <?php if (isset($error)): ?>
+                    <p class="error"><?php echo htmlspecialchars($error, ENT_QUOTES, 'UTF-8'); ?></p>
+                <?php endif; ?>
             </form>
         </div>
     </div>

@@ -28,7 +28,30 @@ class UserModel {
 
     public function addUser($name, $username, $password, $type) {
         $stmt = $this->db->prepare("INSERT INTO users (name, username, password, type) VALUES (?, ?, ?, ?)");
-        return $stmt->execute([$name, $username, $password, $type]);
+        $stmt->bind_param("ssss", $name, $username, $password, $type);
+        return $stmt->execute();
+    }
+
+    public function createUser($username, $password, $firstName, $lastName, $email, $phone, $address, $type = 2) {
+        $this->db->begin_transaction();
+        try {
+            // Thêm người dùng vào bảng `users`
+            $stmt = $this->db->prepare("INSERT INTO users (username, password, type) VALUES (?, ?, ?)");
+            $stmt->bind_param("ssi", $username, $password, $type);
+            $stmt->execute();
+            $userId = $this->db->insert_id;
+
+            // Thêm thông tin chi tiết vào bảng `user_info`
+            $stmt = $this->db->prepare("INSERT INTO user_info (user_id, first_name, last_name, email, mobile, address) VALUES (?, ?, ?, ?, ?, ?)");
+            $stmt->bind_param("isssss", $userId, $firstName, $lastName, $email, $phone, $address);
+            $stmt->execute();
+
+            $this->db->commit();
+            return true;
+        } catch (\Exception $e) {
+            $this->db->rollback();
+            return false;
+        }
     }
 }
 ?>

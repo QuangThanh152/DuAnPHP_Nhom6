@@ -1,9 +1,7 @@
-<?php
-?>
 <link rel="stylesheet" href="/php-Workspace/DuAn_WebMonAn_Nhom6/assets/css/header.css">
 <header class="header">
     <div class="header-content">
-        <a href="#home" class="logo" onclick="scrollToTop(event)">Đặt đồ ăn Online</a>
+        <a href="https://localhost/php-Workspace/DuAn_WebMonAn_Nhom6/" class="logo">Đặt đồ ăn Online</a>
         <!-- Menu Toggle Button -->
         <div class="menu-container">
             <button class="menu-toggle">
@@ -11,11 +9,11 @@
             </button>
             <!-- Dropdown menu -->
             <nav class="nav" id="nav">
-                <a href="#home" class="nav-link" onclick="scrollToTop(event)">
+                <a href="https://localhost/php-Workspace/DuAn_WebMonAn_Nhom6/" class="nav-link">
                     <i class="fa-solid fa-house"></i>
                     Trang chủ
                 </a>
-                <a href="#menu" class="nav-link cart" onclick="scrollToMenu()">
+                <a href="https://localhost/php-Workspace/DuAn_WebMonAn_Nhom6/cart" class="nav-link cart" onclick="scrollToMenu()">
                     <i class="fa-solid fa-cart-shopping"></i>
                     Giỏ hàng
                 </a>

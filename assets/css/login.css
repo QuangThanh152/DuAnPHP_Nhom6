@@ -155,7 +155,7 @@ header {
 
 .wrapper.active {
   top: 25px;
-  height: 600px;
+  height: 700px;
   transform: scale(1);
 }
 
@@ -203,7 +203,7 @@ header {
 .input-box label {
   position: absolute;
   top: 50%;
-  left: 5px;
+  left: -1px;
   transform: translateY(-50%);
   font-size: 1.1em;
   font-weight: 500;
@@ -250,7 +250,7 @@ header {
 
 .input-box input:focus ~ label,
 .input-box input:valid ~ label {
-  top: -5px;
+  top: -7px;
 }
 
 .remember-forgot a {

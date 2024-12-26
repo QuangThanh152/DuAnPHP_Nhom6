@@ -21,8 +21,8 @@
   text-decoration: none;
   font-size: 1.5rem;
   font-family: "Dancing Script", cursive;
-  margin-right: auto; /* Đẩy logo về bên trái */
-  margin-left: 1rem; /* Rút ngắn khoảng cách với lề trái */
+  margin-right: auto;
+  margin-left: 1rem;
 }
 
 .menu-toggle {
@@ -45,20 +45,33 @@
   display: flex;
   gap: 1.5rem;
   align-items: center;
-  margin-left: auto; /* Đẩy các liên kết về bên phải */
+  margin-left: auto;
 }
 
 .nav-link {
+  position: relative;
   color: white;
   text-decoration: none;
   transition: color 0.3s;
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  padding: 5px 0;
 }
 
-.nav-link:hover {
-  color: #4f46e5;
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 2px;
+  background-color: white;
+  transition: width 0.3s ease-in-out;
+}
+
+.nav-link:hover::after {
+  width: 100%;
 }
 
 .nav i {

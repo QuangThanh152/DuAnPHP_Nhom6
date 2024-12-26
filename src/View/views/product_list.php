@@ -10,6 +10,10 @@
             element.classList.add('far');
         }
     }
+
+    function redirectToProductDetail(productId) {
+        window.location.href = `/php-Workspace/DuAn_WebMonAn_Nhom6/product/${productId}`;
+    }
 </script>
 
 <div class="product-grid-container">
@@ -32,7 +36,7 @@
                         </p>
                         <p class="card-price">
                             <span>Rs <?php echo htmlspecialchars($product['price'], ENT_QUOTES, 'UTF-8'); ?> $</span>
-                            <button>+</button>
+                            <button onclick="redirectToProductDetail(<?php echo $product['id']; ?>)">+</button>
                         </p>
                     </div>
                 </div>

@@ -54,3 +54,30 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 });
+document.addEventListener("DOMContentLoaded", (event) => {
+  const loginLink = document.querySelectorAll(".login-link");
+  const registerLink = document.querySelectorAll(".register-link");
+  const wrapper = document.querySelector(".wrapper");
+  const btnLoginPopup = document.querySelector(".btnlogin-popup");
+
+  registerLink.forEach((link) => {
+    link.addEventListener("click", () => {
+      wrapper.classList.add("active");
+    });
+  });
+
+  loginLink.forEach((link) => {
+    link.addEventListener("click", () => {
+      wrapper.classList.remove("active");
+    });
+  });
+
+  btnLoginPopup.addEventListener("click", () => {
+    wrapper.classList.remove("active");
+  });
+
+  const btnRegisterPopup = document.querySelector(".btnregister-popup");
+  btnRegisterPopup.addEventListener("click", () => {
+    wrapper.classList.add("active");
+  });
+});

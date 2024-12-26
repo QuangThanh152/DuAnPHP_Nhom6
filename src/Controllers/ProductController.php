@@ -30,12 +30,16 @@ class ProductController extends Controller {
     }
 
     public function viewProduct($productId) {
-        $product = $this->productModel->getProductById($productId);
-        $title = 'Chi tiết sản phẩm';
-        ob_start();
-        include __DIR__ . '/../View/views/product_detail.php';
-        $content = ob_get_clean();
-        include __DIR__ . '/../View/layouts/HomePage.php';
+        try {
+            $product = $this->productModel->getProductById($productId);
+            $data = [
+                'title' => 'Chi tiết sản phẩm',
+                'product' => $product
+            ];
+            $this->render('product_detail', $data);
+        } catch (Exception $e) {
+            echo "An error occurred: " . $e->getMessage();
+        }
     }
 
     public function createProduct($data) {

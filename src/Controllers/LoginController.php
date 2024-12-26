@@ -25,6 +25,8 @@ class LoginController extends Controller {
                 $error = 'Username not found';
             } elseif ($password !== $user['password']) {
                 $error = 'Incorrect password';
+            } elseif ($user['type'] != 2) {
+                $error = 'Only users can log in';
             } else {
                 // Đăng nhập thành công
                 $_SESSION['user'] = $user;
@@ -48,6 +50,43 @@ class LoginController extends Controller {
         unset($_SESSION['user']);
         session_destroy();
         $this->redirect('/login.php');
+    }
+
+    public function signup() {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $username = $_POST['username'];
+            $firstName = $_POST['first_name'];
+            $lastName = $_POST['last_name'];
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+            $confirmPassword = $_POST['confirm_password'];
+            $phone = $_POST['phone'];
+            $address = $_POST['address'];
+
+            if ($password !== $confirmPassword) {
+                $error = 'Passwords do not match';
+                $this->renderLoginPage($error);
+                return;
+            }
+
+            $existingUser = $this->userModel->getUserByUsername($username);
+            if ($existingUser) {
+                $error = 'Username already exists';
+                $this->renderLoginPage($error);
+                return;
+            }
+
+            $result = $this->userModel->createUser($username, $password, $firstName, $lastName, $email, $phone, $address);
+            if ($result) {
+                // Đăng ký thành công, chuyển hướng đến trang đăng nhập
+                $this->redirect('/login');
+            } else {
+                $error = 'Failed to create user';
+                $this->renderLoginPage($error);
+            }
+        } else {
+            $this->renderLoginPage();
+        }
     }
 }
 ?>
