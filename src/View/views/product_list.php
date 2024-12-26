@@ -16,7 +16,7 @@
     }
 </script>
 
-<div class="product-grid-container">
+<div id="product-list" class="product-grid-container">
     <h2>Danh sách sản phẩm</h2>
     <?php if (isset($products) && count($products) > 0): ?>
         <div class="product-grid">

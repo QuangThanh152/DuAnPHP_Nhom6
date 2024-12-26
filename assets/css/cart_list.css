@@ -156,8 +156,8 @@
   text-align: center;
   border-radius: 8px;
   padding: 20px;
-  position: fixed;
-  top: 50%; /* Đặt ở giữa chiều cao */
+  position: absolute;
+  top: 40%; /* Đặt ở giữa chiều cao */
   right: 20px; /* Đặt ở bên phải */
   transform: translateY(-50%); /* Căn giữa theo chiều dọc */
   z-index: 1;

@@ -5,6 +5,9 @@
   background-position: center;
   position: relative;
 }
+html {
+  scroll-behavior: smooth;
+}
 
 .banner-overlay {
   position: absolute;
