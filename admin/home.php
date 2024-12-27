@@ -5,7 +5,7 @@ if (session_status() === PHP_SESSION_NONE) {
 
 include('includes/access_control.php');
 // Only allow admin (type = 1)
-checkAccess(1);
+// checkAccess(1);
 
 include('admin_class.php');
 $action = new Action();

@@ -1,3 +1,4 @@
+
 <div class="product-detail" data-product-id="<?php echo $product['id']; ?>">
     <img src="/php-Workspace/DuAn_WebMonAn_Nhom6/assets/img/<?php echo htmlspecialchars($product['img_path'], ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($product['name'], ENT_QUOTES, 'UTF-8'); ?>">
     <div class="product-detail-info">
@@ -19,5 +20,4 @@
     </div>
 </div>
 <script src="/php-Workspace/DuAn_WebMonAn_Nhom6/assets/js/product-detail.js"></script>
-
 

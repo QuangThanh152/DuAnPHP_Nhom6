@@ -1,3 +1,18 @@
+<?php
+if (!isset($_SESSION['user'])) { 
+    // Chuyển hướng đến trang đăng nhập 
+    header('Location: http://localhost/php-Workspace/DuAn_WebMonAn_Nhom6/login'); 
+    exit(); 
+}
+?>
+
+<!-- Thông báo -->
+<?php if (isset($notification) && !empty($notification)): ?>
+<div id="notification" class="notification">
+    <p><?php echo htmlspecialchars($notification, ENT_QUOTES, 'UTF-8'); ?></p>
+</div>
+<?php endif; ?>
+
 <div class="cart-container">
     <div class="cart-items">
         <h2>Giỏ hàng của bạn</h2>
@@ -72,10 +87,6 @@
 </div>
 
 <!-- Thông báo thành công -->
-<div id="notification" class="notification">
-    <p><?php echo isset($notification) ? $notification : ''; ?></p>
-</div>
-
 <script>
 function updateQuantity(id, action) {
     const quantityInput = document.getElementById('quantity-' + id);
@@ -88,14 +99,15 @@ function updateQuantity(id, action) {
 }
 
 document.addEventListener('DOMContentLoaded', (event) => {
-    <?php if (isset($notification)): ?>
+    <?php if (isset($notification) && !empty($notification)): ?>
     // Hiển thị thông báo
     const notification = document.getElementById('notification');
     notification.classList.add('show');
     // Tự động ẩn thông báo sau 3 giây
-    setTimeout(() =>{
+    setTimeout(() => {
         notification.classList.remove('show');
     }, 3000);
     <?php endif; ?>
 });
 </script>
+

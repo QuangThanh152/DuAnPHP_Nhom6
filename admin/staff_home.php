@@ -5,7 +5,7 @@ if (session_status() === PHP_SESSION_NONE) {
 
 include('includes/access_control.php');
 // Only allow staff (type = 2)
-checkAccess(2);
+// checkAccess(2);
 
 include('admin_class.php');
 $action = new Action();

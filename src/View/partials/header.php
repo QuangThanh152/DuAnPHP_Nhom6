@@ -24,9 +24,9 @@
                 <?php if (isset($_SESSION['user'])): ?>
                     <a href="#" class="nav-link">
                         <i class="fa-solid fa-user"></i>
-                        Hello, <?php echo htmlspecialchars($_SESSION['user']['username']); ?>
+                        Hello, <?php echo htmlspecialchars($_SESSION['user']['username']); // Sử dụng username trong session ?>
                     </a>
-                    <a href="/php-Workspace/DuAn_WebMonAn_Nhom6/logout.php" class="nav-link" style="margin-right: 1rem;">
+                    <a href="/php-Workspace/DuAn_WebMonAn_Nhom6/logout" class="nav-link" style="margin-right: 1rem;">
                         <i class="fa-solid fa-sign-out-alt"></i>
                         Đăng Xuất
                     </a>

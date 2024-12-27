@@ -9,7 +9,13 @@ class UserModel {
     }
 
     public function getUserByUsername($username) {
-        $stmt = $this->db->prepare("SELECT * FROM users WHERE username = ?");
+        $stmt = $this->db->prepare("
+            SELECT 
+                * 
+            FROM 
+                users 
+            WHERE 
+                username = ?");
         $stmt->bind_param("s", $username);
         $stmt->execute();
         $result = $stmt->get_result();

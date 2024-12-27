@@ -1,3 +1,19 @@
+<?php
+// Kiểm tra và hiển thị thông báo chi tiết nếu có
+if (isset($_SESSION['missing_info'])) {
+    echo '<div class="alert alert-warning">' . $_SESSION['missing_info'] . '</div>';
+    unset($_SESSION['missing_info']);
+}
+
+// Hiển thị thông báo lỗi nếu có
+if (isset($error)) {
+    echo '<div class="alert alert-danger">' . htmlspecialchars($error) . '</div>';
+}
+?>
+
+<!-- Nội dung trang đăng nhập -->
+<!-- ... -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

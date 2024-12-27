@@ -1,5 +1,6 @@
 <?php
 namespace App\Models;
+
 class UserInfoModel {
     private $db;
 
@@ -7,13 +8,25 @@ class UserInfoModel {
         $this->db = $conn;
     }
 
+    public function getUserInfoById($user_id) {
+        $stmt = $this->db->prepare("SELECT address, mobile, email FROM user_info WHERE user_id = ?");
+        $stmt->bind_param("i", $user_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_assoc();
+    }
+
+
     public function addUserInfo($first_name, $last_name, $email, $password, $mobile, $address) {
         $stmt = $this->db->prepare("INSERT INTO user_info (first_name, last_name, email, password, mobile, address) VALUES (?, ?, ?, ?, ?, ?)");
         return $stmt->execute([$first_name, $last_name, $email, $password, $mobile, $address]);
     }
 
-    public function getUserInfos() {
-        return $this->db->query("SELECT * FROM user_info")->fetchAll();
+    public function getUserInfo($user_id) {
+        $stmt = $this->db->prepare("SELECT first_name, last_name, address, mobile, email FROM user_info WHERE user_id = ?");
+        $stmt->bind_param("i", $user_id);
+        $stmt->execute();
+        return $stmt->get_result()->fetch_assoc();
     }
 
     public function updateUserInfo($user_id, $first_name, $last_name, $email, $password, $mobile, $address) {

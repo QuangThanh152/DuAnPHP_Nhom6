@@ -12,10 +12,13 @@
 </head>
 <body>
    <header>  
-        <div class="logo">
+   <div class="logo">
+        <a href="http://localhost/php-Workspace/DuAn_WebMonAn_Nhom6/">
             <i class="fas fa-utensils"></i> <!-- Biểu tượng đồ ăn từ Font Awesome -->
             <h2>HOLO Restaurant</h2>
-        </div>
+        </a>
+    </div>
+
         <nav class="navigation">
             <button class="btnlogin-popup">Login</button>
             <button class="btnlogin-popup">Register</button>

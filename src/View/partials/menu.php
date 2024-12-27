@@ -13,3 +13,4 @@
       </button>
     </div>
 </section>
+<script src="/php-Workspace/DuAn_WebMonAn_Nhom6/assets/js/pagination.js"></script>

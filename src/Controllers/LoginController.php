@@ -3,9 +3,11 @@ namespace App\Controllers;
 
 use App\Core\Controller;
 use App\Models\UserModel;
+use App\Models\UserInfoModel;
 
 class LoginController extends Controller {
     private $userModel;
+    private $userInfoModel;
 
     public function __construct() {
         $conn = new \mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
@@ -13,6 +15,7 @@ class LoginController extends Controller {
             die("Connection failed: " . $conn->connect_error);
         }
         $this->userModel = new UserModel($conn);
+        $this->userInfoModel = new UserInfoModel($conn);
     }
 
     public function login() {
@@ -22,14 +25,24 @@ class LoginController extends Controller {
             $user = $this->userModel->getUserByUsername($username);
 
             if ($user === false) {
-                $error = 'Username not found';
+                $error = 'Username không tồn tại';
             } elseif ($password !== $user['password']) {
-                $error = 'Incorrect password';
+                $error = 'Mật khẩu không đúng';
             } elseif ($user['type'] != 2) {
-                $error = 'Only users can log in';
+                $error = 'Chỉ người dùng có thể đăng nhập';
             } else {
-                // Đăng nhập thành công
-                $_SESSION['user'] = $user;
+                // Lấy thông tin từ UserInfoModel
+                $userInfo = $this->userInfoModel->getUserInfoById($user['id']);
+                
+                // Đăng nhập thành công và lưu thông tin vào session
+                $_SESSION['user'] = [
+                    'user_id' => $user['id'], // Lưu user_id vào session
+                    'username' => $user['username'],
+                    'name' => $user['first_name'] . ' ' . $user['last_name'],
+                    'address' => $userInfo['address'],
+                    'mobile' => $userInfo['mobile'],
+                    'email' => $userInfo['email'],   
+                ];
                 $this->redirect('/products');
                 return;
             }
@@ -49,7 +62,7 @@ class LoginController extends Controller {
     public function logout() {
         unset($_SESSION['user']);
         session_destroy();
-        $this->redirect('/login.php');
+        $this->redirect('/login');
     }
 
     public function signup() {
@@ -64,14 +77,14 @@ class LoginController extends Controller {
             $address = $_POST['address'];
 
             if ($password !== $confirmPassword) {
-                $error = 'Passwords do not match';
+                $error = 'Mật khẩu không khớp';
                 $this->renderLoginPage($error);
                 return;
             }
 
             $existingUser = $this->userModel->getUserByUsername($username);
             if ($existingUser) {
-                $error = 'Username already exists';
+                $error = 'Tên người dùng đã tồn tại';
                 $this->renderLoginPage($error);
                 return;
             }
@@ -81,7 +94,7 @@ class LoginController extends Controller {
                 // Đăng ký thành công, chuyển hướng đến trang đăng nhập
                 $this->redirect('/login');
             } else {
-                $error = 'Failed to create user';
+                $error = 'Tạo người dùng thất bại';
                 $this->renderLoginPage($error);
             }
         } else {

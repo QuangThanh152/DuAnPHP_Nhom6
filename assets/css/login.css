@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,800;1,100;1,200;1,300;1,400;1,500;1,600&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap");
 
 * {
   margin: 0;
@@ -21,6 +21,7 @@ body {
   background-attachment: fixed; /* Đảm bảo ảnh nền không cuộn theo nội dung */
   background-color: #f0f0f0;
 }
+
 .error {
   color: red;
   font-weight: bold;
@@ -44,16 +45,30 @@ header {
   width: 100%;
   object-fit: cover;
 }
+
 .fa-utensils {
   font-size: 48px; /* Thay đổi giá trị này để điều chỉnh kích thước biểu tượng */
   color: #333; /* Màu sắc của biểu tượng */
   margin-right: 20px;
 }
 
-.logo.h2 {
-  font-size: 1em;
+.logo a {
+  text-decoration: none; /* Loại bỏ gạch chân mặc định của thẻ a */
+  color: inherit; /* Giữ nguyên màu sắc của phần tử cha */
+  display: flex; /* Đảm bảo các phần tử con nằm ngang */
+  align-items: center; /* Canh giữa các phần tử con theo chiều dọc */
+}
+
+.logo i {
+  font-size: 48px; /* Kích thước biểu tượng */
+  color: #333; /* Màu sắc biểu tượng */
+  margin-right: 20px; /* Khoảng cách giữa biểu tượng và văn bản */
+}
+
+.logo h2 {
+  font-size: 2em; /* Tăng kích thước chữ cho thẻ h2 */
   color: black;
-  user-select: none;
+  user-select: none; /* Ngăn chặn người dùng chọn văn bản */
 }
 
 .logo img {

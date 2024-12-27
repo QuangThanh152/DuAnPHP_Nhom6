@@ -11,7 +11,7 @@
 </script>
 <section class="banner" id="home">
   <div class="banner-overlay">
-    <h1 class="banner-title">Chào mừng bạn đến với Nhom6 Food</h1>
+    <h1 class="banner-title">Chào mừng bạn đến với Nhóm6 Website HoLo Restaurant</h1>
     <button class="order-button" onclick="scrollToMenu()">Đặt hàng ngay</button>
   </div>
 </section>

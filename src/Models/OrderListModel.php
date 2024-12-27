@@ -1,5 +1,6 @@
 <?php
 namespace App\Models;
+
 class OrderListModel {
     private $db;
 
@@ -9,15 +10,21 @@ class OrderListModel {
 
     public function addOrderItem($order_id, $product_id, $qty) {
         $stmt = $this->db->prepare("INSERT INTO order_list (order_id, product_id, qty) VALUES (?, ?, ?)");
-        return $stmt->execute([$order_id, $product_id, $qty]);
+        $stmt->bind_param("iii", $order_id, $product_id, $qty);
+        return $stmt->execute();
     }
 
     public function getOrderItems($order_id) {
-        return $this->db->query("SELECT * FROM order_list WHERE order_id = $order_id")->fetchAll();
+        $stmt = $this->db->prepare("SELECT * FROM order_list WHERE order_id = ?");
+        $stmt->bind_param("i", $order_id);
+        $stmt->execute();
+        return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
     }
 
     public function deleteOrderItem($id) {
-        return $this->db->query("DELETE FROM order_list WHERE id = $id");
+        $stmt = $this->db->prepare("DELETE FROM order_list WHERE id = ?");
+        $stmt->bind_param("i", $id);
+        return $stmt->execute();
     }
 }
 ?>
